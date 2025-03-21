@@ -1,5 +1,5 @@
 let maxIterations = 100;
-let minReal = -2.5;
+let minReal = -1.8;
 let maxReal = 1;
 let minImag = -1;
 let maxImag = 1;
@@ -12,7 +12,7 @@ function setup() {
   colorMode(HSB, 255);
 }
 
-function draw() {
+function draw() {//no need to change anything here
   loadPixels();
 
   for (let x = 0; x < width; x++) {
@@ -61,19 +61,28 @@ function draw() {
   updatePixels();
 }
 
-// Mandelbrot iteration function: returns the iteration count before escape
+//ALL PROJECT CODE GOES WITHIN THIS FUNCTION
 function mandelbrotIterations(a0, b0, maxIterations) {
-  let a = a0;
-  let b = b0;
-  let n = 0;
-  while (n < maxIterations && (a * a + b * b <= 4)) {
-    let aa = a * a - b * b;
-    let bb = 2 * a * b;
-    a = aa + a0;
-    b = bb + b0;
-    n++;
-  }
-  return n;
+  // Step 1: create three variables. Remember to use let! For example, let x = 5;
+//         - 'a' and 'b', which start with the same values as 'a0' and 'b0'.
+//         - 'n', a counter that tracks how many iterations (loops) have occurred. It starts at 0.
+
+// Step 2: Set up a loop that continues as long as:
+//         - The counter 'n' is less than maxIterations(defined at the top of this program), and
+//         - The condition (a*a + b*b <= 4) is true 
+
+// Step 4: Within the loop, calculate two new values using these equations:
+//         - aa = (a*a) - (b*b)
+//         - bb = 2*a*b
+
+// Step 5: Update the values of 'a' and 'b':
+//         - Set 'a' to (aa + a0)
+//         - Set 'b' to (bb + b0)
+
+// Step 6: Each time the loop runs, add 1 to the iteration counter 'n'.
+
+// Step 7: After the loop ends, return the value of 'n'.
+//         - This number tells you how many iterations occurred before the point "escaped" or reached maxIterations.
 }
 
 // Map a brightness value to a color (using HSB)
